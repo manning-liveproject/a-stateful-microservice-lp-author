@@ -33,6 +33,7 @@ services:
   db:
     image: mariadb:10.9
     environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
       MYSQL_USER: manning
       MYSQL_PASSWORD: WasmEdge
       MYSQL_DATABASE: umet
