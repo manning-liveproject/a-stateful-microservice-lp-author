@@ -25,8 +25,7 @@
 
   function init() {
     fetch("http://localhost:8003/init")
-      .then(() => fetchOrders())
-      .catch((e) => displayError(e));
+      .then(() => fetchOrders());
   }
 
   function renderOrders() {
@@ -93,7 +92,7 @@
   }
 
   function updateOrderForm(json) {
-    alert("The order total for " + json.order_id + " has been updated to " + json.total);
+    alert("The order total has been updated to " + json.total);
     fetchOrders();
     document.getElementById("add-order-form").reset();
   }
