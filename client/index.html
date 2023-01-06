@@ -9,7 +9,7 @@
   <div class="container mt-5">
   
     <div id="order-display">
-      <h1>Welcome to the Demo!</h1>
+      <h1>Welcome to UMET!</h1>
 
       <div id="order-empty-text" class="d-none">
         <em>There are currently no orders to display!</em>
@@ -21,11 +21,11 @@
             <th>Id</th>
             <th>Product Id</th>
             <th>Quantity</th>
-            <th>Amount</th>
-            <th>Shipping</th>
-            <th>Tax</th>
-            <th>Address</th>
-            <th></th>
+            <th>Subtotal</th>
+            <th>Shipping Address</th>
+            <th>Shipping Zip Code</th>
+            <th>Shipping Cost</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -36,11 +36,6 @@
       <div id="add-order-wrapper" class="row">
         <div class="col-6">
                 <form id="add-order-form">
-                  <div class="mb-3">
-                    <label for="order-id" class="form-label">Order Id</label>
-                    <input type="number" required class="form-control" id="order-id" aria-describedby="orderIdHelp">
-                    <div id="orderIdHelp" class="form-text">The ID of the order</div>
-                  </div>
                   <div class="mb-3">
                     <label for="product-id" class="form-label">Product Id</label>
                     <input type="number" required class="form-control" id="product-id" aria-describedby="productIdHelp">
@@ -65,6 +60,11 @@
                     <label for="shippingZip" class="form-label">Shipping Zip Code</label>
                     <input type="text" required class="form-control" id="shippingZip" aria-describedby="zipHelp">
                     <div id="zipHelp" class="form-text">The receipient zip code</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="shippingCost" class="form-label">Shipping Cost</label>
+                    <input type="number" required class="form-control" id="shippingCost" aria-describedby="costHelp">
+                    <div id="costHelp" class="form-text">The shipping cost</div>
                   </div>
 
                   <button type="button" id="save" class="btn btn-success">Save Order</button>
