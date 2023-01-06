@@ -79,7 +79,7 @@ async fn handle_request(req: Request<Body>, pool: Pool) -> Result<Response<Body>
         (&Method::GET, "/init") => {
             let mut conn = pool.get_conn().await.unwrap();
             // "DROP TABLE IF EXISTS orders;".ignore(&mut conn).await?;
-            "CREATE TABLE IF NOT EXISTS orders (order_id INT, product_id INT, quantity INT, subtotal FLOAT, shipping_address VARCHAR(1024), shipping_zip VARCHAR(32), total FLOAT);".ignore(&mut conn).await?;
+            "CREATE TABLE IF NOT EXISTS orders (order_id INT NOT NULL AUTO_INCREMENT, product_id INT, quantity INT, subtotal FLOAT, shipping_address VARCHAR(1024), shipping_zip VARCHAR(32), total FLOAT);".ignore(&mut conn).await?;
             drop(conn);
             Ok(response_build("{\"status\":true}"))
         }
@@ -101,9 +101,8 @@ async fn handle_request(req: Request<Body>, pool: Pool) -> Result<Response<Body>
                     .parse::<f32>()?;
                 order.total = order.subtotal * (1.0 + rate);
                 
-                "INSERT INTO orders (order_id, product_id, quantity, subtotal, shipping_address, shipping_zip, total) VALUES (:order_id, :product_id, :quantity, :subtotal, :shipping_address, :shipping_zip, :total)"
+                "INSERT INTO orders (product_id, quantity, subtotal, shipping_address, shipping_zip, total) VALUES (:order_id, :product_id, :quantity, :subtotal, :shipping_address, :shipping_zip, :total)"
                     .with(params! {
-                        "order_id" => order.order_id,
                         "product_id" => order.product_id,
                         "quantity" => order.quantity,
                         "subtotal" => order.subtotal,
