@@ -77,7 +77,7 @@ jobs:
         fi
         resp=$(curl http://localhost:8003/create_order -X POST -d @order.json)
         echo "$resp"
-        if [[ $resp == *"21.65"* ]]; then
+        if [[ $resp == *"27.15"* ]]; then
           echo -e "Execution Success!"
         else
           echo -e "Execution Fail!"
