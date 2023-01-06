@@ -34,15 +34,16 @@ $ curl http://localhost:8003/init
 
 $ curl http://localhost:8003/create_order -X POST -d @order.json
 {
-  "order_id": 123,
+  "order_id": 0,
   "product_id": 321,
   "quantity": 2,
   "subtotal": 20.0,
   "shipping_address": "123 Main St, Anytown USA",
   "shipping_zip": "78701",
-  "total": 21.65
+  "shipping_cost": 5.5,
+  "total": 27.15
 }
 
 $ curl http://localhost:8003/orders
-[{"order_id":123,"product_id":321,"quantity":2,"subtotal":20.0,"shipping_address":"123 Main St, Anytown USA","shipping_zip":"78701","total":21.65}]
+[{"order_id":1,"product_id":321,"quantity":2,"subtotal":20.0,"shipping_address":"123 Main St, Anytown USA","shipping_zip":"78701","shipping_cost":5.5,"total":27.15}]
 ```
