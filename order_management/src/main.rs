@@ -31,7 +31,7 @@ lazy_static! {
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Order {
-    order_id: Option<i32>,
+    order_id: i32,
     product_id: i32,
     quantity: i32,
     subtotal: f32,
@@ -42,7 +42,7 @@ struct Order {
 
 impl Order {
     fn new(
-        order_id: Option<i32>,
+        order_id: i32,
         product_id: i32,
         quantity: i32,
         subtotal: f32,
